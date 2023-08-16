@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/first_nav.xml"
+    app:startDestination="@id/conversionFragment">
+
+    <fragment
+        android:id="@+id/conversionFragment"
+        android:name="com.task.currencyconversion.ui.convertCurrency.ConversionFragment"
+        android:label="ConversionFragment" >
+        <action
+            android:id="@+id/action_conversionFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_conversionFragment_to_settings"
+            app:destination="@id/settings" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.task.currencyconversion.ui.details.DetailsFragment"
+        android:label="DetailsFragment" >
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="to"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.task.currencyconversion.ui.settings.Settings"
+        android:label="Settings" />
+</navigation>

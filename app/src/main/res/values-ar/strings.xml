@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Currency</string>
+    <string name="networkLost">تم فقد الاتصال بالانترنت</string>
+    <string name="from">من</string>
+    <string name="to">الى</string>
+    <string name="details">التفاصيل</string>
+    <string name="switchCurrency">تبادل العملة</string>
+    <string name="pleaseSelectCurrencies">من فضلك اختر العملات</string>
+    <string name="dataChart">رسم بياني</string>
+    <string name="nightMode">الوضع الليلي</string>
+    <string name="light">ايقاف الوضع الليلي</string>
+    <string name="dark">تشغيل الوضع الليلي</string>
+    <string name="auto">تلقائي</string>
+    <string name="language">اللغة</string>
+    <string name="ar">ع</string>
+    <string name="en">En</string>
+    <string name="settings">الاعدادات</string>
+    <string name="back">رجوع</string>
+</resources>

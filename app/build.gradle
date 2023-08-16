@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.dagger.hilt.android'
+apply plugin: 'org.jetbrains.kotlin.android'
+
+android {
+    namespace 'com.task.currencyconversion'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.task.currencyconversion"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField "String", "ApiKey", "${apiKey}"
+        }
+        release {
+            buildConfigField "String", "ApiKey", "${apiKey}"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        dataBinding true
+        buildConfig true
+    }
+
+}
+
+dependencies {
+
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.core.ktx)
+    implementation libs.androidx.junit.ktx
+    implementation libs.androidx.runner
+    kapt(libs.kotlinx.metadata.jvm)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+
+    //navComponent
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    //room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.work.runtime.ktx)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.compiler)
+
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    implementation(libs.converter.moshi)
+    implementation(libs.logging.interceptor)
+
+
+    //worker
+    implementation libs.androidx.work.runtime.ktx
+
+    //hilt
+    implementation libs.dagger.hilt.android
+    kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.work)
+    implementation(libs.androidx.hilt.navigation.fragment)
+    kapt(libs.androidx.hilt.compiler)
+    kapt (libs.kotlinx.metadata.jvm)
+
+    //dataStore
+    implementation(libs.androidx.datastore.preferences)
+
+    //MPAndroidChart
+    implementation(libs.mpchart)
+
+    //test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation libs.androidx.core.testing
+    androidTestImplementation libs.androidx.rules
+    androidTestImplementation libs.androidx.espresso.intents
+    testImplementation(libs.robolectric)
+    testImplementation libs.hamcrest.all
+
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="mode"
+            type="Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.task.currencyconversion.ui.settings.SettingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/settings"
+            android:src="@drawable/ic_round_settings_suggest_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/amaranth_purple" />
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="@null"
+            android:padding="16dp"
+            android:src="@drawable/round_arrow_back_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/amaranth_purple"
+            android:contentDescription="@string/back" />
+
+        <TextView
+            android:id="@+id/textView30"
+            style="@style/title"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/nightMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <RadioGroup
+            android:id="@+id/nightMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView30">
+
+            <RadioButton
+                android:id="@+id/nightOff"
+                style="@style/radio_button"
+                android:checked="@{mode==2}"
+                android:text="@string/light" />
+
+            <RadioButton
+                android:id="@+id/nightOn"
+                style="@style/radio_button"
+                android:checked="@{mode==3}"
+                android:text="@string/dark" />
+
+            <RadioButton
+                android:id="@+id/nightAuto"
+                style="@style/radio_button"
+                android:checked="@{mode==1}"
+                android:text="@string/auto" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/title"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/language"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nightMode" />
+
+        <TextView
+            android:id="@+id/ar"
+            style="@style/option"
+            android:onClick="@{()->viewModel.setLanguage(@id/ar)}"
+            android:text="@string/ar"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/en"
+            style="@style/option"
+            android:layout_marginTop="8dp"
+            android:onClick="@{()->viewModel.setLanguage(@id/en)}"
+            android:text="@string/en"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/ar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
